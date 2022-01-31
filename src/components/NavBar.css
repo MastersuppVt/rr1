@@ -55,3 +55,24 @@
     text-decoration: none;
     color: #558ed9;
   }
+  .acordeon{
+    padding: 2em;
+    width: 100%;
+
+  }
+.bloque{
+    margin: 0 0 1em;
+    padding: 1em;
+}
+.h2{
+    margin: 0 0 1em;
+  }
+.contenido{
+    padding: 0em;
+    height: 0px;
+    overflow: hidden;
+    transition: all .5s ease;
+  }
+.activo{
+    height: 4em;
+  }

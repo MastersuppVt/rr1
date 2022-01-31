@@ -1,6 +1,8 @@
 
 import "./NavBar.css";
 import CardWidget from "./CartWidget"
+// import CartContainer from "./CartContainer";
+
 const NavBar = (props) => {
     console.log(props);
 
@@ -9,7 +11,7 @@ const NavBar = (props) => {
             <nav>
                 <div class="barra" id="barra">
                     <a href="#barra">
-                      <CardWidget/> 
+                        <CardWidget />
                     </a>
                     <div class="menu" id="close">
                         <p>
@@ -18,7 +20,8 @@ const NavBar = (props) => {
                             </strong>
 
                         </p>
-
+                       
+                        {/* <CartContainer /> */}
                         <a href="index.html">Inicio</a>
 
                         <a href="social.html">Social</a>
@@ -34,7 +37,6 @@ const NavBar = (props) => {
                 </div>
             </nav>
         </div>
-
     );
 };
 export default NavBar;

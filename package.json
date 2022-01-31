@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "bild": "babel src -d output"
+    "build": "babel src -d output"
   },
   "eslintConfig": {
     "extends": [

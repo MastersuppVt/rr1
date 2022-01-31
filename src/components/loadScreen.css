@@ -1,0 +1,53 @@
+.loader {
+    margin: auto;
+    display: flex;
+    z-index: 110;
+    background-color: #180f31;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    clip-path: circle(150% at 0 100%);
+    transition: all 0.8s;
+  }
+  .loader2 {
+    clip-path: circle(0% at 0 100%);
+  }
+  #barraProgreso{
+    transform: translate(75%,50%);
+    position: absolute;
+    height: 50vh;
+    width: 50vw;
+    display: flex;
+    overflow: hidden;
+  }
+  .cargando {
+    position: absolute;
+  height: 50vh;
+  
+  }
+  #cargado {
+    position: absolute;
+  height: 50vh;
+  width: 0%;
+  overflow: hidden;
+  transition: all 0.2s;
+  animation: cargado 5s;
+  }
+  #cargado img{
+    object-position: center;
+    size: 50vw 50vh;
+  }
+  .cargadoFull {
+    position: absolute;
+  height: 50vh;
+  width: 0%;
+  overflow: hidden;
+  }
+  .cargadoFull2{
+    position: absolute;
+  height: 50vh;
+  width: 100%;
+  overflow: hidden;
+   z-index: 10000;
+  }
