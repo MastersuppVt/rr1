@@ -1,33 +1,62 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 const Icount = () => {
-
     const [counter, setCounter] = useState(1);
-	const handlerCounterUp = () => {
-        if(counter<58){
+    const [stock, setStock] = useState(1);
+    const [producto, setProducto] = useState(1);
+    function itemCount(stock, inicial, onAdd) {
+        var n1 = Number(prompt("stock"))
+        var n2 = Number(prompt("inicial"))
+        setStock(n1)
+        setProducto(n2)
+    }
+    const onAdd = () => {
+        
+        if (producto <= stock) {
+            setProducto(producto + counter)
+            setStock(stock - counter)
+            setCounter(0);
+        }
+    }
+
+    const quitar = () => {
+        if (producto > stock) {
+            setProducto(producto - counter)
+            setStock(stock + counter)
+            setCounter(0);
+        }
+    }
+    const handlerCounterUp = () => {
+        if (counter < stock) {
             setCounter(counter + 1);
         }
-	};
+    };
 
-	const handlerCounterDown = () => {
-        if(counter>0){
-	setCounter(counter - 1);
+    const handlerCounterDown = () => {
+        if (counter > 0) {
+            setCounter(counter - 1);
         }
-	
-	};
-	const onClick = () => {
-		alert('click');
-	};
 
-	const myNumber = 58;
-    return(
+    };
+
+    // const onClick = () => {
+    //     alert('click');
+    // };
+
+    return (
         <div className='CounterSection'>
-				<p>Counter: {counter}</p>
-				<div className='btn-section'>
-					<button onClick={handlerCounterUp}>Incrementar</button>
-					<button onClick={handlerCounterDown}>Decrementar</button>
-				</div>
+            <p>Counter: {counter}</p>
+            <p>producto: {producto}</p>
+            <p>stock: {stock}</p>
+            <div className='btn-section'>
+            <button onClick={itemCount}>add</button>
+                <button onClick={onAdd}>Añadir</button>
+                <button onClick={quitar}>quitar</button>
+                <button onClick={handlerCounterUp}>Incrementar</button>
+                <button onClick={handlerCounterDown}>Decrementar</button>
 
-			</div>
+            </div>
+
+        </div>
     );
 
 };
