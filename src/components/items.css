@@ -1,0 +1,7 @@
+.lista{
+    overflow: hidden;
+    height: 0;
+}
+.mostrarLista{
+    background-color: blue;
+}

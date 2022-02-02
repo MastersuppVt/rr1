@@ -10,7 +10,7 @@ const Icount = () => {
             console.log("hi")
         };
     }, []);
-
+    
     function itemCount(stock, inicial, onAdd) {
         var n1 = stock;
         var n2 = inicial;
@@ -19,21 +19,21 @@ const Icount = () => {
     }
     const onAdd = () => {
 
-        if (producto <= stock) {
+        if (counter <= stock) {
             setProducto(producto + counter)
             setStock(stock - counter)
             setCounter(0);
         }
     }
     const quitar = () => {
-        if (producto >0&&(producto - counter)>=0) {
+        if (producto > 0 && (producto - counter) >= 0) {
             setProducto(producto - counter)
             setStock(stock + counter)
             setCounter(0);
         }
     }
     const handlerCounterUp = () => {
-        if (counter < stock) {
+        if (counter < stock || producto > stock) {
             setCounter(counter + 1);
         }
     };
@@ -55,7 +55,7 @@ const Icount = () => {
             <p>producto: {producto}</p>
             <p>stock: {stock}</p>
             <div className='btn-section'>
-
+        
                 <button onClick={onAdd}>Añadir</button>
                 <button onClick={quitar}>quitar</button>
                 <button onClick={handlerCounterUp}>Incrementar</button>

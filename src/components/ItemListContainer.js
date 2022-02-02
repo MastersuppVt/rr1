@@ -1,7 +1,14 @@
 import "./NavBar.css";
-import itemCount from "./ItemCount.js"
-const ItemListContainer = () =>{
-    <itemCount stock="5" inicial="1" />
-    return <h1 class="logoN">x</h1>
+import IList from "./ItemList";
+import item from "./Item";
+const ItemListContainer = () => {
+    
+    return (
+        <>
+            <h1 class="logoN">x</h1>
+            <IList />
+        </>
+
+    )
 }
 export default ItemListContainer
