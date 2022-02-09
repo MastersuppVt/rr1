@@ -1,38 +1,30 @@
-import React, { Component, useState } from "react";
-import close from "./assets/close.png"
+import React, { Component, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-import("./items.css")
-
-
-const ItemDetail = ({ item }) => {
-
-    const { nombre, precio, id, img, imgP } = item;
+const ItemDetail = () => {
+    const [characters, setCharacters] = useState([])
+    let id = useParams().id;
+    useEffect(() => {
+        axios(`https://www.breakingbadapi.com/api/characters/${id}`).then((res) => setCharacters(res.data))
+    }, [id]);
     return (
-        <>
-            <div class="ventana">
-                <div class={id} id={id}>
-                <a href="#close"><img src={close} className="closeBtm"></img></a>
-                    <div className="sPro"> 
-                        <img className="img" src={imgP}></img>
-                        <div className="dcn">
-                            <h1>{nombre}</h1>
-                            <h2>Precio:{precio}</h2>
+        <div>
+            {
+                characters.map((char) => {
+                    return (
+                        <div>
+                            <h1>{char.name}</h1>
+                            <h2>{char.status}</h2>
+                            <img src={char.img}></img>
 
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Tenetur, nesciunt vitae perspiciatis accusantium exercitationem impedit repellendus dolor,
-                                obcaecati delectus similique nam pariatur nihil dicta animi saepe doloremque deleniti ipsa voluptatum.
-                            </p>
                         </div>
+                    );
+                })
+            }
 
 
-                        
-                    </div>
-
-
-                </div>
-            </div>
-        </>
-
+        </div >
     )
 }
 
