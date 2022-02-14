@@ -58,21 +58,29 @@
 // }
 // export default ItemDetailContainer
 import React, { Component, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Icount from "./ItemCount";
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({ n1 }) => {
+    
+    const [ver, setVer] = useState(true);
     const [characters, setCharacters] = useState([])
     let id = useParams().id;
     useEffect(() => {
         axios(`https://www.breakingbadapi.com/api/characters/${id}`).then((res) => setCharacters(res.data))
     }, [id]);
+    function onAdd(){
+      return   setVer(false)
+    }
     return (
         <div>
+
             {
                 characters.map((char) => {
                     return (
                         <div>
+                            <h1>{n1}</h1>
                             <h1>{char.name}</h1>
                             <h2>{char.status}</h2>
                             <img src={char.img}></img>
@@ -81,7 +89,8 @@ const ItemDetailContainer = () => {
                     );
                 })
             }
-
+            {ver ?      <Icount añadir={onAdd} /> : <Link to="/cart"><button>Comprar</button></Link>}
+       
 
         </div >
     )

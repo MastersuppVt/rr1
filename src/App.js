@@ -22,6 +22,7 @@ import ItemListContainer from "./components/ItemListContainer";
 import NavBar from "./components/NavBar";
 import ItemDetail from "./components/ItemDetail";
 import ItemDetailContainer from "./components/ItemDetailContainer";
+import CartContainer from "./components/CartContainer";
 
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/category/:name" element={<ItemListContainer />} />
           <Route path="/producto/:id" element={<ItemDetailContainer />} />
+          <Route path="/cart" element={<CartContainer />} />
         </Routes>
       </div>
     </Router>

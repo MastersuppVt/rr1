@@ -1,6 +1,10 @@
 import React, { Component, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import CartWidget from "./CartWidget";
+import ItemDetailContainer from "./ItemDetailContainer";
+import NavBar from "./NavBar";
 
-const Icount = () => {
+const Icount = ({ añadir }) => {
     const [counter, setCounter] = useState(1);
     const [stock, setStock] = useState(1);
     const [producto, setProducto] = useState(1);
@@ -10,10 +14,10 @@ const Icount = () => {
             console.log("hi")
         };
     }, []);
-    
+
     function itemCount(stock, inicial, onAdd) {
-        var n1 = stock;
-        var n2 = inicial;
+        var n1 = stock
+        var n2 = inicial
         setStock(n1)
         setProducto(n2)
     }
@@ -23,6 +27,7 @@ const Icount = () => {
             setProducto(producto + counter)
             setStock(stock - counter)
             setCounter(0);
+            añadir()
         }
     }
     const quitar = () => {
@@ -30,6 +35,7 @@ const Icount = () => {
             setProducto(producto - counter)
             setStock(stock + counter)
             setCounter(0);
+
         }
     }
     const handlerCounterUp = () => {
@@ -44,24 +50,28 @@ const Icount = () => {
         }
 
     };
-
     // const onClick = () => {
     //     alert('click');
     // };
-
     return (
-        <div className='CounterSection'>
-            <p>Counter: {counter}</p>
-            <p>producto: {producto}</p>
-            <p>stock: {stock}</p>
-            <div className='btn-section'>
-        
-                <button onClick={onAdd}>Añadir</button>
-                <button onClick={quitar}>quitar</button>
-                <button onClick={handlerCounterUp}>Incrementar</button>
-                <button onClick={handlerCounterDown}>Decrementar</button>
 
+        <div className='CounterSection'>
+            <div>
+                <p>Counter: {counter}</p>
+                <p>producto: {producto}</p>
+                <p>stock: {stock}</p>
+                <div className='btn-section'>
+
+                    <button onClick={onAdd} >Añadir</button>
+                    <button onClick={quitar}>quitar</button>
+                    <button onClick={handlerCounterUp}>Incrementar</button>
+                    <button onClick={handlerCounterDown}>Decrementar</button>
+
+                </div>
             </div>
+
+
+
 
         </div>
     );
