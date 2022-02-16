@@ -6,20 +6,18 @@ import NavBar from "./NavBar";
 
 const Icount = ({ añadir }) => {
     const [counter, setCounter] = useState(1);
-    const [stock, setStock] = useState(1);
+    const [stock, setStock] = useState(20);
     const [producto, setProducto] = useState(1);
-    useEffect(() => {
-        itemCount(Number(prompt("stock")), Number(prompt("inicial")))
-        return () => {
-            console.log("hi")
-        };
-    }, []);
+    // useEffect(() => {
+    //     itemCount(Number(prompt("stock")), Number(prompt("inicial")))
+    //     return () => {
+    //         console.log("hi")
+    //     };
+    // }, []);
 
-    function itemCount(stock, inicial, onAdd) {
-        var n1 = stock
-        var n2 = inicial
-        setStock(n1)
-        setProducto(n2)
+    function itemCount() {
+        setStock(20)
+        setProducto(1)
     }
     const onAdd = () => {
 
@@ -57,9 +55,12 @@ const Icount = ({ añadir }) => {
 
         <div className='CounterSection'>
             <div>
-                <p>Counter: {counter}</p>
-                <p>producto: {producto}</p>
-                <p>stock: {stock}</p>
+                <div>
+                    <h3>Counter: {counter}</h3>
+                    <h4>producto: {producto}</h4>
+                    <h5>stock: {stock}</h5>
+                </div>
+
                 <div className='btn-section'>
 
                     <button onClick={onAdd} >Añadir</button>

@@ -57,13 +57,16 @@
 //     )
 // }
 // export default ItemDetailContainer
+import { useContext } from "react";
 import React, { Component, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Icount from "./ItemCount";
+import { CartContext } from "./CartContext";
+import Char from "./ItemDetail";
 
-const ItemDetailContainer = ({ n1 }) => {
-    
+const ItemDetailContainer = ({ n1, }) => {
+    const {item}=useContext(CartContext);
     const [ver, setVer] = useState(true);
     const [characters, setCharacters] = useState([])
     let id = useParams().id;
@@ -75,7 +78,6 @@ const ItemDetailContainer = ({ n1 }) => {
     }
     return (
         <div>
-
             {
                 characters.map((char) => {
                     return (
@@ -90,8 +92,12 @@ const ItemDetailContainer = ({ n1 }) => {
                 })
             }
             {ver ?      <Icount añadir={onAdd} /> : <Link to="/cart"><button>Comprar</button></Link>}
-       
-
+           { characters.map((char) => (
+                    <Char
+                        key={char.id}
+                        char={char}
+                    />
+                ))}
         </div >
     )
 }

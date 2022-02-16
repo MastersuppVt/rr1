@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Item from "./Item";
 import ItemListContainer from "./ItemListContainer";
-const NavBar = () => {
+const NavBar = ({cart, setCart}) => {
   const [category, setCategory] = useState([
     { name: "characters", url: "https://www.breakingbadapi.com/api/characters" },
     { name: "episodes", url: "https://www.breakingbadapi.com/api/episodes" },
@@ -14,8 +14,7 @@ const NavBar = () => {
   ]
 
   )
-  ItemListContainer(category);
-  
+
   return (
 
     <nav>

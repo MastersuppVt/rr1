@@ -1,7 +1,7 @@
 
 // React Rounter Dom 6.0.2 (4)
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import React, {useState} from "react";
 // Views
 import Home from "./components/pages/inicio";
 import About from "./components/pages/donate";
@@ -23,28 +23,40 @@ import NavBar from "./components/NavBar";
 import ItemDetail from "./components/ItemDetail";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import CartContainer from "./components/CartContainer";
-
+import { CartContext, CartProvider, CartStateProvider } from "./components/CartContext";
 
 const App = () => {
+ 
   return (
+
     <Router>
-      <div className="App">
-        <NavBar />
-        <Routes>
-          {/* <Route path="/" element={<Home />} /> 
+      <CartProvider >
+        <CartStateProvider>
+        <div className="App">
+
+          <NavBar />
+
+
+
+          <Routes>
+            {/* <Route path="/" element={<Home />} /> 
          
           <Route path="/donate" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/news" element={<News />} />
           <Route path="/media" element={<Media />} />
         */}
-          <Route path="/" element={<ItemListContainer />} />
-          <Route path="/category/:name" element={<ItemListContainer />} />
-          <Route path="/producto/:id" element={<ItemDetailContainer />} />
-          <Route path="/cart" element={<CartContainer />} />
-        </Routes>
-      </div>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route path="/category/:name" element={<ItemListContainer />} />
+            <Route path="/producto/:id" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<CartContainer />} />
+          </Routes>
+        </div>
+        </CartStateProvider>
+      </CartProvider>
+
     </Router>
+
   );
 };
 
