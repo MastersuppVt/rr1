@@ -19,9 +19,6 @@ const NavBar = ({cart, setCart}) => {
 
     <nav>
       <div class="barra" id="barra">
-        <a href="#barra">
-          <CartWidget />
-        </a>
 
         <div class="menu" id="close">
           <Link to="/">

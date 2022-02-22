@@ -1,4 +1,4 @@
-import "../style/styles.css"
+// import "../style/styles.css"
 const Inicio = () => {
 return(
     <div class="contenedor">

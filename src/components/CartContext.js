@@ -1,14 +1,16 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import ItemListContainer from './ItemListContainer';
+import data from './data';
 // 1 - CREAR EL CONTEXTO
 export const CartContext = createContext();
 export const CartState = createContext();
 // 2 - CREAR EL COMPONENTE PROVIDER (ItemsProvider)
 export const CartStateProvider =({children})=>{
-    const [krt, setKrt] = useState([]);
+	
+	const [cartItems, setCartItems] = useState([]);
     return (
-		<CartState.Provider value={[krt, setKrt]}>
+		<CartState.Provider value={[cartItems, setCartItems]}>
 			{/* 4 - PROPS.CHILDREN O BIEN CHILDREN */}
 			{children}
 		</CartState.Provider>

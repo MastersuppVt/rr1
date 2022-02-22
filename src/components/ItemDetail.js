@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Card from '@mui/material/Card';
@@ -10,10 +10,11 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Icount from "./ItemCount";
+import { CartState } from "./CartContext";
 
 const Char = ({ char, cart, setCart, characters }) => {
     const { name, img, status, char_id } = char;
-    const [counter, setCounter] = useState(0)
+    const [krt,setKrt,counter, setCounter] = useContext(CartState)
     const [inCart, setInCart] = useState(0)
     const addChar = (id) => {
         if (counter === 0) {
@@ -86,7 +87,7 @@ const Char = ({ char, cart, setCart, characters }) => {
                             </button>
                         </Link>
 
-                        <Icount />
+                        <Icount cart={cart}/>
                     </div>
 
                 )}

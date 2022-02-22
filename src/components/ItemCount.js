@@ -1,11 +1,12 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "./CartContext";
 import CartWidget from "./CartWidget";
 import ItemDetailContainer from "./ItemDetailContainer";
 import NavBar from "./NavBar";
-
-const Icount = ({ añadir }) => {
-    const [counter, setCounter] = useState(1);
+import { CartState } from "./CartContext";
+const Icount = ({ rt }) => {
+    const [krt, setKart, counter, setCounter] = useContext(CartState);
     const [stock, setStock] = useState(20);
     const [producto, setProducto] = useState(1);
     // useEffect(() => {
@@ -23,9 +24,10 @@ const Icount = ({ añadir }) => {
 
         if (counter <= stock) {
             setProducto(producto + counter)
+            // setKart(krt+counter)
             setStock(stock - counter)
             setCounter(0);
-            añadir()
+            rt()
         }
     }
     const quitar = () => {

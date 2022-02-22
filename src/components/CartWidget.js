@@ -1,27 +1,32 @@
 import img from "./color.png";
 import Char from "./ItemDetail";
-import React,{useContext} from "react";
+import React, { useContext, useState } from "react";
 import { CartContext, CartState } from "./CartContext";
-const CartWidget = () => {
-const [char, setChar] = useContext(CartContext);
-const [krt, setKrt]= useContext(CartState)
+import Icount from "./ItemCount";
+import { Link } from "react-router-dom";
+const CartWidget = (props) => {
+
     return (
+
         <>
+
+            <a href="#barra">
             <img class="logo" src={img} alt="icono mastersupp" title="Icono"></img>
-            <p class="logo">{krt.length}</p>
+            </a>
+               <Link to="/cart">
+                <div class="logo">
+                    {' '}
+                    {props.countCartItems ? (
+                        <button className="badge">{props.countCartItems}</button>
+                    ) : (
+                        ''
+                    )}
+                </div>
+                </Link> 
             
-            {krt.length === 0 ? (
-                <p>Carrito vacio...</p>
-            ) : (
-                krt.map((char) => (
-                    <Char
-                        key={char.char_id+1}
-                        char={char}
-                        cart={krt}
-                        setCart={setKrt}
-                    />
-                ))
-            )}
+
+
+
         </>
 
     )

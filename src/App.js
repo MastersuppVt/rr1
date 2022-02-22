@@ -1,7 +1,7 @@
 
 // React Rounter Dom 6.0.2 (4)
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React, {useState} from "react";
+import React, { useState } from "react";
 // Views
 import Home from "./components/pages/inicio";
 import About from "./components/pages/donate";
@@ -9,6 +9,7 @@ import Contact from "./components/pages/contacto";
 import Media from "./components/pages/media";
 import News from "./components/pages/news"
 import ItemListContainer from "./components/ItemListContainer";
+
 /*
 1.Crear nuestras pages (o views)
 2.Importar los componentes de react-router-dom(BrowserRouter, Route, Routes)
@@ -24,37 +25,37 @@ import ItemDetail from "./components/ItemDetail";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import CartContainer from "./components/CartContainer";
 import { CartContext, CartProvider, CartStateProvider } from "./components/CartContext";
+import ShoppingCart from "./components/ShoppingCart";
+import Cart2 from "./components/Cart2";
+import Basket from "./components/Basket";
 
 const App = () => {
- 
+
   return (
 
     <Router>
-      <CartProvider >
-        <CartStateProvider>
-        <div className="App">
+      <CartStateProvider>
+        <CartProvider >
 
-          <NavBar />
+          <div className="App">
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<Cart2 />} />
+              <Route path="/cart" element={<Basket />} />
+              <Route path="/donate" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/media" element={<Media />} />
 
 
+              <Route path="/category/:name" element={<ItemListContainer />} />
+              <Route path="/producto/:id" element={<ItemDetailContainer />} />
+              <Route path="/cart" element={<CartContainer />} />
+            </Routes>
+          </div>
 
-          <Routes>
-            {/* <Route path="/" element={<Home />} /> 
-         
-          <Route path="/donate" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/media" element={<Media />} />
-        */}
-            <Route path="/" element={<ItemListContainer />} />
-            <Route path="/category/:name" element={<ItemListContainer />} />
-            <Route path="/producto/:id" element={<ItemDetailContainer />} />
-            <Route path="/cart" element={<CartContainer />} />
-          </Routes>
-        </div>
-        </CartStateProvider>
-      </CartProvider>
-
+        </CartProvider>
+      </CartStateProvider>
     </Router>
 
   );
