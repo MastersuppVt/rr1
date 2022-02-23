@@ -20,6 +20,7 @@ import ItemListContainer from "./components/ItemListContainer";
 */
 
 // Component
+import {db} from "./firebase/firebaseConfig"
 import NavBar from "./components/NavBar";
 import ItemDetail from "./components/ItemDetail";
 import ItemDetailContainer from "./components/ItemDetailContainer";
@@ -28,7 +29,8 @@ import { CartContext, CartProvider, CartStateProvider } from "./components/CartC
 import ShoppingCart from "./components/ShoppingCart";
 import Cart2 from "./components/Cart2";
 import Basket from "./components/Basket";
-
+import "./components/style/styles.css"
+import IList from "./components/ItemList";
 const App = () => {
 
   return (
@@ -38,7 +40,7 @@ const App = () => {
         <CartProvider >
 
           <div className="App">
-            <NavBar />
+        
             <Routes>
               <Route path="/" element={<Cart2 />} />
               <Route path="/cart" element={<Basket />} />
@@ -48,10 +50,11 @@ const App = () => {
               <Route path="/media" element={<Media />} />
 
 
-              <Route path="/category/:name" element={<ItemListContainer />} />
+              <Route path="/category/:category" element={<IList />} />
               <Route path="/producto/:id" element={<ItemDetailContainer />} />
               <Route path="/cart" element={<CartContainer />} />
             </Routes>
+            <NavBar />
           </div>
 
         </CartProvider>

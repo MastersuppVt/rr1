@@ -1,35 +1,35 @@
 import "./NavBar.css";
 import CartWidget from "./CartWidget"
 import { Link, NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Item from "./Item";
 import ItemListContainer from "./ItemListContainer";
-const NavBar = ({cart, setCart}) => {
-  const [category, setCategory] = useState([
-    { name: "characters", url: "https://www.breakingbadapi.com/api/characters" },
-    { name: "episodes", url: "https://www.breakingbadapi.com/api/episodes" },
-    { name: "quotes", url: "https://www.breakingbadapi.com/api/quotes" },
-    { name: "deaths", url: "https://www.breakingbadapi.com/api/deaths" }
-  ]
+import { CartContext, CartState } from "./CartContext";
+import img from "./assets/color.png"
+const NavBar = ({ cart, setCart }) => {
 
-  )
-
+  const [products, setProducts] = useContext(CartContext)
+  const [cartItems, setCartItems,num,setNum] = useContext(CartState);
   return (
 
     <nav>
       <div class="barra" id="barra">
 
+        <a href="#barra">
+          <img class="logo" src={img} alt="icono mastersupp" title="Icono"></img>
+        </a>
+        <CartWidget countCartItems={num} />
         <div class="menu" id="close">
           <Link to="/">
             Inicio
           </Link>
-          {category.map((cat) => {
+          {products.map((cat) => {
             return (
-              
+
               <div>
-                <Link to={`/category/${cat.name}`}>
-                  {cat.name}
+                <Link to={`/category/${cat.category}`}>
+                  {cat.category}
                 </Link>
 
               </div>

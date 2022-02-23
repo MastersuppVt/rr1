@@ -17,11 +17,11 @@ export default function Product(props) {
 
       <Card sx={{ }}>
         <CardActionArea>
-          <Link to={`/producto/${product.name}`}>
+          <Link to={`/producto/${product.id}`}>
             <CardMedia
               component="img"
               height="360"
-              image={product.image}
+              image={product.img}
               alt="green iguana"
             />
           </Link>
@@ -31,7 +31,7 @@ export default function Product(props) {
               {product.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {product.price}
+              {product.precio}
             </Typography>
           </CardContent>
         </CardActionArea>

@@ -62,42 +62,62 @@ import React, { Component, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Icount from "./ItemCount";
-import { CartContext } from "./CartContext";
+import { CartContext, CartState } from "./CartContext";
 import Char from "./ItemDetail";
-
+import CardComponent from "./CardComponent";
+import Basket from "./Basket";
 const ItemDetailContainer = ({ n1, }) => {
-    const {item}=useContext(CartContext);
+    const [cartItems, setCartItems,num,setNum] = useContext(CartState)
+    const [products] = useContext(CartContext);
     const [ver, setVer] = useState(true);
     const [characters, setCharacters] = useState([])
     let id = useParams().id;
-    useEffect(() => {
-        axios(`https://www.breakingbadapi.com/api/characters/${id}`).then((res) => setCharacters(res.data))
-    }, [id]);
-    function onAdd(){
-      return   setVer(false)
+    const result = products.filter(product => product.id == id)
+    const onAdd = (product) => {
+        const exist = cartItems.find((x) => x.id === product.id);
+        if (exist) {
+            setNum(num + 1)
+            setCartItems(
+                cartItems.map((x) =>
+                    x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+                )
+            );
+        } else {
+            setNum(cartItems.length + 1)
+            setCartItems([...cartItems, { ...product, qty: 1 }]);
+        }
+    };
+    const onRemove = (product) => {
+        const exist = cartItems.find((x) => x.id === product.id);
+        if (exist.qty === 1) {
+            setNum(num - 1)
+            setCartItems(cartItems.filter((x) => x.id !== product.id));
+        } else {
+            setNum(num - 1)
+            setCartItems(
+                cartItems.map((x) =>
+                    x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+                )
+            );
+        }
+    };
+    const RemoveAll = () => {
+        setNum(0)
+        setCartItems([])
     }
     return (
-        <div>
-            {
-                characters.map((char) => {
-                    return (
-                        <div>
-                            <h1>{n1}</h1>
-                            <h1>{char.name}</h1>
-                            <h2>{char.status}</h2>
-                            <img src={char.img}></img>
-
-                        </div>
-                    );
-                })
-            }
-            {ver ?      <Icount añadir={onAdd} /> : <Link to="/cart"><button>Comprar</button></Link>}
-           { characters.map((char) => (
-                    <Char
-                        key={char.id}
-                        char={char}
-                    />
-                ))}
+        <div  className="block col-2 contenedor">
+            {result.map((item) => (
+                <CardComponent
+                    key={item.id}
+                    char={item} />
+            ))}
+            <Basket
+                cartItems={cartItems}
+                onAdd={onAdd}
+                onRemove={onRemove}
+                Erase={RemoveAll}
+            ></Basket>
         </div >
     )
 }

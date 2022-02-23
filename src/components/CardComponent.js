@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 const CardComponent = ({ char, cart, setCart, characters }) => {
 
-  const { name, img, status, id } = char;
+  const { name, img, status, id, precio } = char;
   const addChar = (id) => {
     const char = characters.filter((char) => char.id === id);
     setCart([...cart, ...char]);
@@ -22,13 +22,13 @@ const CardComponent = ({ char, cart, setCart, characters }) => {
   };
 
   return (
-    <Card sx={{ width:400, height:600 }}>
+    <Card sx={{ width: 400, height: 600 }}>
       <CardActionArea>
-        <Link to={`/producto/${char.char_id}`}>
+        <Link to={`/producto/${char.id}`}>
           <CardMedia
             component="img"
             height="360"
-            image={img}
+            image={char.img}
             alt="green iguana"
           />
         </Link>
@@ -38,12 +38,12 @@ const CardComponent = ({ char, cart, setCart, characters }) => {
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {status}
+            {precio}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <button
+        {/* <button
           type="button"
           onClick={() => addChar(id)}
         >
@@ -67,7 +67,7 @@ const CardComponent = ({ char, cart, setCart, characters }) => {
         </button>
         <Button size="small" color="primary">
           Share
-        </Button>
+        </Button> */}
       </CardActions>
     </Card>
   );

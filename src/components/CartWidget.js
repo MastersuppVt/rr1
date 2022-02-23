@@ -9,21 +9,21 @@ const CartWidget = (props) => {
     return (
 
         <>
-
             <a href="#barra">
-            <img class="logo" src={img} alt="icono mastersupp" title="Icono"></img>
-            </a>
-               <Link to="/cart">
                 <div class="logo">
+
                     {' '}
                     {props.countCartItems ? (
                         <button className="badge">{props.countCartItems}</button>
                     ) : (
                         ''
                     )}
+
                 </div>
-                </Link> 
-            
+            </a>
+            <Link to="/cart">
+            </Link>
+
 
 
 
