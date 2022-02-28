@@ -1,21 +1,15 @@
-import React from "react";
+import * as React from 'react';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
-const Message = ({ msg, bgColor }) => {
-  let styles = {
-    padding: "1rem",
-    marginBottom: "1rem",
-    textAlign: "center",
-    color: "#fff",
-    fontWeight: "bold",
-    backgroundColor: bgColor,
-  };
-
-  return (
-    <div style={styles}>
-      {/* <p>{msg}</p> */}
-      <p dangerouslySetInnerHTML={{ __html: msg }} />
-    </div>
-  );
+const Message = ({ purchaseID }) => {
+	return (
+		<Stack sx={{ width: '100%' }} spacing={2}>
+			<Alert severity='success'>
+				Gracias por su compra! su id de transacción es: {purchaseID}
+			</Alert>
+		</Stack>
+	);
 };
 
 export default Message;

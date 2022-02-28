@@ -45,7 +45,7 @@ function Cart2({ children }) {
     }
     return (
         <div className="App">
-            <CartWidget countCartItems={num} />
+            
             <div className="row">
                 <Main products={products} onAdd={onAdd}></Main>
                 <Basket

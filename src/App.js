@@ -31,6 +31,7 @@ import Cart2 from "./components/Cart2";
 import Basket from "./components/Basket";
 import "./components/style/styles.css"
 import IList from "./components/ItemList";
+import Shop from "./components/shop";
 const App = () => {
 
   return (
@@ -48,7 +49,7 @@ const App = () => {
               <Route path="/contact" element={<Contact />} />
               <Route path="/news" element={<News />} />
               <Route path="/media" element={<Media />} />
-
+              <Route path="/purchase" element={<Shop />} />
 
               <Route path="/category/:category" element={<IList />} />
               <Route path="/producto/:id" element={<ItemDetailContainer />} />

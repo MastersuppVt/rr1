@@ -1,4 +1,6 @@
+
 import React,{useContext} from 'react';
+import { Link } from 'react-router-dom';
 import { CartState } from './CartContext';
 
 export default function Basket(props) {
@@ -62,9 +64,12 @@ export default function Basket(props) {
               <button onClick={Erase}>
                 Borrar todo
               </button>
-              <button onClick={Erase}>
+              <Link to="/purchase">
+              <button>
                 Terminar mi compra
               </button>
+              </Link>
+              
             </div>
           </>
         )}
